@@ -1,5 +1,9 @@
 ---
 title: "About This Website"
 ---
+```{r}
+library(ggplot2)
 
-More about this website.
+ggplot(iris) + geom_point(aes(x = Sepal.Width, y = Petal.Length, color = Species))
+                          
+```
