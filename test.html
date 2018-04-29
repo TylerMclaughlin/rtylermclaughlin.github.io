@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Andrew Mehrmann" />
+
+
+<title>D3 with GitHub Pages</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">My Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="test.md">test jscript</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">D3 with GitHub Pages</h1>
+<h4 class="author"><em>Andrew Mehrmann</em></h4>
+<h4 class="date"><em>May 1, 2016</em></h4>
+
+</div>
+
+
+<script src="//code.jquery.com/jquery.js"></script>
+<style>
+
+.node {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+.link {
+  stroke: #999;
+  stroke-opacity: .6;
+}
+
+</style>
+<p><a href="https://d3js.org/">D3</a> is a <a href="https://www.javascript.com/">Javascript</a> library for producing really cool visualizations such as <a href="http://www.r2d3.us/visual-intro-to-machine-learning-part-1/">this one</a> and <a href="https://github.com/mbostock/d3/wiki/Gallery">these</a>. According to <a href="https://en.wikipedia.org/wiki/D3.js">Wikipedia</a>, D3 offers greater control over the appearance of the final result than other similar libraries. This (probably) means that it requires a bit more Javascript experience than other libraries, but I have to admit I’m totally new to Javascript.</p>
+<p>For this post, I wanted to make a simple D3 visualization to test whether or not there would be any hiccups to overcome in order to host my own D3 work with a Jekyll Blog and GitHub Pages. Javascript is high on my list of things to learn and I think picking up D3 along the way would be fun way to do that. I do not, however, want the presence of D3 on this site to indicate to anyone that I know what I’m doing. I do not.</p>
+<div id="d3div">
+
+</div>
+<p>You can click-and-drag the nodes around, although I’m not sure why you’d want to except that it is unreasonably fun. I think I read somewhere the edges of this graph are meant to behave like springs, but <a href="https://en.wikipedia.org/wiki/Mike_Bostock">Mike Bostock</a> provides more information in the link given below.</p>
+<div id="the-code" class="section level2">
+<h2>The Code</h2>
+<p>The visualization above was taken from <a href="http://bl.ocks.org/mbostock/4062045">this</a> entry of the <a href="https://github.com/mbostock/d3/wiki/Gallery">D3 gallery</a>. First, I create a <code>style</code> tag for the node and link attributes of the plot.</p>
+{% highlight html %}
+<style>
+
+.node {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+.link {
+  stroke: #999;
+  stroke-opacity: .6;
+}
+
+</style>
+<p>{% endhighlight %}</p>
+<p>Then I create a <code>div</code> tag to place the D3-created SVG. You can assign it any id you want, here I chose “d3div”.</p>
+{% highlight html %}
+<div id="d3div">
+
+</div>
+<p>{% endhighlight %}</p>
+<p>Finally the actual Javascript to create the SVG. I wanted the SVG to resize based on the width of the parent container. This way it should work properly when viewed on mobile or on a skinny web broswer window. To do this I changed the width variable to grab the width of the d3div tag. When you resize the window you’ll have to refresh your browser to get the SVG to change. There almost certainly exists a more clever approach, but I didn’t take the time to work it out.</p>
+<p>{% highlight html %}</p>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script>
+
+var width = $("#d3div").width(),
+    height = 500;
+
+var color = d3.scale.category20();
+
+var force = d3.layout.force()
+    .charge(-120)
+    .linkDistance(30)
+    .size([width, height]);
+
+var svg = d3.select("#d3div").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+d3.json("../../../../scripts/miserables.json", function(error, graph) {
+  if (error) throw error;
+
+  force
+      .nodes(graph.nodes)
+      .links(graph.links)
+      .start();
+
+  var link = svg.selectAll(".link")
+      .data(graph.links)
+    .enter().append("line")
+      .attr("class", "link")
+      .style("stroke-width", function(d) { return Math.sqrt(d.value); });
+
+  var node = svg.selectAll(".node")
+      .data(graph.nodes)
+    .enter().append("circle")
+      .attr("class", "node")
+      .attr("r", 5)
+      .style("fill", function(d) { return color(d.group); })
+      .call(force.drag);
+
+  node.append("title")
+      .text(function(d) { return d.name; });
+
+  force.on("tick", function() {
+    link.attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+
+    node.attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; });
+  });
+});
+
+</script>
+<p>{% endhighlight %}</p>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script>
+
+var width = $("#d3div").width(),
+    height = 500;
+
+var color = d3.scale.category20();
+
+var force = d3.layout.force()
+    .charge(-120)
+    .linkDistance(30)
+    .size([width, height]);
+
+var svg = d3.select("#d3div").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+d3.json("../../../../scripts/miserables.json", function(error, graph) {
+  if (error) throw error;
+
+  force
+      .nodes(graph.nodes)
+      .links(graph.links)
+      .start();
+
+  var link = svg.selectAll(".link")
+      .data(graph.links)
+    .enter().append("line")
+      .attr("class", "link")
+      .style("stroke-width", function(d) { return Math.sqrt(d.value); });
+
+  var node = svg.selectAll(".node")
+      .data(graph.nodes)
+    .enter().append("circle")
+      .attr("class", "node")
+      .attr("r", 5)
+      .style("fill", function(d) { return color(d.group); })
+      .call(force.drag);
+
+  node.append("title")
+      .text(function(d) { return d.name; });
+
+  force.on("tick", function() {
+    link.attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+
+    node.attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; });
+  });
+});
+
+</script>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>This went off without a hitch. If I understood more of how all of this works I suppose there wouldn’t have been any doubt, but it is nonetheless nice to know that you can embed D3 visualizations in Jekyll blog posts.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
