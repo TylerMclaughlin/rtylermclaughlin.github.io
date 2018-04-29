@@ -56,7 +56,7 @@
 {"group": 1, "name": "G sharp Harmonic Minor"},
 {"group": 1, "name": "E Major"},
 {"group": 1, "name": "B flat Altered"},
-{"group": 1, "name": "C Altered"},
+{"group": 1, "name": "C Altered"}
 ],
 "links":[
 {"source": 0, "target": 3, "value": "5"},
@@ -994,6 +994,6 @@
 {"source": 3, "target": 15, "value": "6"},
 {"source": 3, "target": 16, "value": "6"},
 {"source": 3, "target": 22, "value": "6"},
-{"source": 3, "target": 5, "value": "6"},
+{"source": 3, "target": 5, "value": "6"}
 ]
 }
