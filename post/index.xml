@@ -17,7 +17,34 @@
       <pubDate>Sun, 29 Apr 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/d3-embedding-rmd/</guid>
-      <description></description>
+      <description>.node { stroke: #fff; stroke-width: 1.5px; } .link { stroke: #999; stroke-opacity: .6; }  D3 is a Javascript library for producing really cool visualizations such as this one and these. According to Wikipedia, D3 offers greater control over the appearance of the final result than other similar libraries. This (probably) means that it requires a bit more Javascript experience than other libraries, but I have to admit I’m totally new to Javascript.</description>
+    </item>
+    
+    <item>
+      <title>d3-embedding.Rmd</title>
+      <link>/post/d3-embedding-rmd/</link>
+      <pubDate>Sun, 29 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/d3-embedding-rmd/</guid>
+      <description>.node { stroke: #fff; stroke-width: 1.5px; } .link { stroke: #999; stroke-opacity: .6; }  [D3](https://d3js.org/) is a [Javascript](https://www.javascript.com/) library for producing really cool visualizations such as [this one](http://www.r2d3.us/visual-intro-to-machine-learning-part-1/) and [these](https://github.com/mbostock/d3/wiki/Gallery). According to [Wikipedia](https://en.wikipedia.org/wiki/D3.js), D3 offers greater control over the appearance of the final result than other similar libraries. This (probably) means that it requires a bit more Javascript experience than other libraries, but I have to admit I&#39;m totally new to Javascript.</description>
+    </item>
+    
+    <item>
+      <title>d3-embedding.Rmd</title>
+      <link>/post/d3-embedding-rmd/</link>
+      <pubDate>Sun, 29 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/d3-embedding-rmd/</guid>
+      <description>.node { stroke: #fff; stroke-width: 1.5px; } .link { stroke: #999; stroke-opacity: .6; }  [D3](https://d3js.org/) is a [Javascript](https://www.javascript.com/) library for producing really cool visualizations such as [this one](http://www.r2d3.us/visual-intro-to-machine-learning-part-1/) and [these](https://github.com/mbostock/d3/wiki/Gallery). According to [Wikipedia](https://en.wikipedia.org/wiki/D3.js), D3 offers greater control over the appearance of the final result than other similar libraries. This (probably) means that it requires a bit more Javascript experience than other libraries, but I have to admit I&#39;m totally new to Javascript.</description>
+    </item>
+    
+    <item>
+      <title>d3-embedding.Rmd</title>
+      <link>/post/d3-embedding-rmd/</link>
+      <pubDate>Sun, 29 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/d3-embedding-rmd/</guid>
+      <description>.node { stroke: #fff; stroke-width: 1.5px; } .link { stroke: #999; stroke-opacity: .6; }  [D3](https://d3js.org/) is a [Javascript](https://www.javascript.com/) library for producing really cool visualizations such as [this one](http://www.r2d3.us/visual-intro-to-machine-learning-part-1/) and [these](https://github.com/mbostock/d3/wiki/Gallery). According to [Wikipedia](https://en.wikipedia.org/wiki/D3.js), D3 offers greater control over the appearance of the final result than other similar libraries. This (probably) means that it requires a bit more Javascript experience than other libraries, but I have to admit I&#39;m totally new to Javascript.</description>
     </item>
     
     <item>
