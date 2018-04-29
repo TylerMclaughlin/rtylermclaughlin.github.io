@@ -7,5 +7,5 @@ navbar:
     - text: "About"
       href: about.html
     - text: "test jscript"
-      href: test.md
+      href: test.html
 output_dir: "."
