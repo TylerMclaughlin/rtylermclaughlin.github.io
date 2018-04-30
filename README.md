@@ -4,7 +4,8 @@ You can use the [editor on GitHub](https://github.com/TylerMclaughlin/tylermclau
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-[a relative link](_posts/2018-04-29-jazz-scale-networks.md)
+[md](_posts/2018-04-29-jazz-scale-networks.md)
+[html](_posts/2018-04-29-jazz-scale-networks.html)
 
 ### Markdown
 
