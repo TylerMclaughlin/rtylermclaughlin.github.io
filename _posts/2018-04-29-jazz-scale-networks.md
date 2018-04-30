@@ -4,7 +4,6 @@ title: "D3 with GitHub Pages"
 author: "R. Tyler McLaughlin"
 date: "April 29th, 2018"
 categories: blog
-output: html_document
 ---
 <script src="//code.jquery.com/jquery.js"></script>
 <style>
