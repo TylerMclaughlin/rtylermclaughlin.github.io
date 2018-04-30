@@ -83,7 +83,7 @@ d3.json("../../../../scripts/jazz_scales_network_symmetric.json", function(error
 
 # Hello!
 
-My name is Tyler McLaughlin and I'm a PhD scientist living in Houston, TX.  My scientific career as a biologist began with researching computational systems biology in Pittsburgh, PA and Farmington, CT.  I had a math and molecular biology double major in undergrad and so this research focus felt natural.  During my PhD in Systems, Synthetic, and Physical Biology at Rice University, my research involved human cell biophysics and systems biology, mostly at the experimental level but with extensive amounts of image-based and statistical data analysis.   I am now applying to be a computational biologist at many companies on the West Coast.  You can learn more about me [here](https://www.linkedin.com/in/r-tyler-mclaughlin-phd).
+My name is Tyler McLaughlin and I'm a PhD scientist living in Houston, TX.  My scientific career as a biologist began with researching computational systems biology in Pittsburgh, PA and Farmington, CT.  I did a math and molecular biology double major in undergrad and so this research direction felt very natural.  During my PhD in Systems, Synthetic, and Physical Biology at Rice University, my research involved human cell biophysics and systems biology, mostly at the experimental level but with extensive amounts of image-based and statistical data analysis.   I am now applying to be a computational biologist at many companies on the West Coast.  You can learn more about me [here](https://www.linkedin.com/in/r-tyler-mclaughlin-phd).
 
 # Posts
 
