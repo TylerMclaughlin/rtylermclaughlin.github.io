@@ -55,7 +55,7 @@ var svg = d3.select("#d3div").append("svg")
     .attr("width", width)
     .attr("height", height);
 
-d3.json("../data/jazz_scales_network_minCTs6.json", function(error, graph) {
+d3.json("./data/jazz_scales_network_minCTs6.json", function(error, graph) {
   if (error) throw error;
 
   force
