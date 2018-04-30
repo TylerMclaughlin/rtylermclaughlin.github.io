@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "D3 with GitHub Pages"
+title: "Visualizing CyTOF data"
 author: "R. Tyler McLaughlin"
 date: "April 29th, 2018"
 categories: blog
