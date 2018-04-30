@@ -1,4 +1,12 @@
-Loading the data
+---
+layout: post
+title: "D3 with GitHub Pages"
+author: "R. Tyler McLaughlin"
+date: "April 29th, 2018"
+categories: blog
+---
+
+#Loading the data
 ----------------
 
 blah blah blah
