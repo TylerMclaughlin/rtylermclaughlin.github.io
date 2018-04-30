@@ -95,5 +95,4 @@ d3.json("../../../../scripts/jazz_scales_network_minCTs6.json", function(error, 
 
 ## Conclusion
 
-# Andrew Mehrmann, Eric Bickel
-This went off without a hitch. If I understood more of how all of this works I suppose there wouldn't have been any doubt, but it is nonetheless nice to know that you can embed D3 visualizations in Jekyll blog posts. 
+I'd like to thank the following bloggers for their helpful posts: [Andrew Mehrmann](http://dkmehrmann.github.io/blog/2016/05/01/d3.html), [Eric Bickel](https://ehbick01.github.io/2017/05/09/embedding-d3-visuals-in-rmarkdown/), and [Tyler Clavelle](https://tclavelle.github.io/blog/blogdown_github/)
