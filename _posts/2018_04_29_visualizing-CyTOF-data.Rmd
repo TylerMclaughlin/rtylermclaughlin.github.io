@@ -1,0 +1,20 @@
+---
+title: "Visualizing CyTOF data"
+author: R. Tyler McLaughlin 
+date: April 29, 2018
+output:
+  md_document
+---
+
+## Loading the data
+
+blah blah blah
+
+```{r, load.data}
+library(data.table)
+load('../scripts/CyTOF-data.Rda')
+dt1
+```
+
+
+## Performing vi-T-SNE
