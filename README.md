@@ -1,12 +1,6 @@
----
-layout: default
-title: Blog
-navigable: true
----
-
 # Hello!
 
-My Name is Tyler McLaughlin and I'm a PhD Scientist living in Houston.  My scientific career  as a biologist started off researching computational systems biology in Pittsburgh, PA and Farmington, CT.  I had a math and molecular biology double major in undergrad and so this focus felt natural.  During my PhD in Systems, Synthetic, and Physical Biology, my research involved human cell biophysics and systems biology, mostly at the experimental level but with extensive amounts of image-based and statistical data analysis.   I am now applying to be a computational biologist at many companies on the West Coast.  You can learn more about me [here](www.linkedin.com/in/r-tyler-mclaughlin-phd).
+My Name is Tyler McLaughlin and I'm a PhD Scientist living in Houston.  My scientific career as a biologist began with researching systems biology in Pittsburgh, PA and Farmington, CT.  I had a math and molecular biology double major in undergrad and so this focus felt natural.  During my PhD in Systems, Synthetic, and Physical Biology at Rice University, my research involved human cell biophysics and systems biology, mostly at the experimental level but with extensive amounts of image-based and statistical data analysis.   I am now applying to be a computational biologist at many companies on the West Coast.  You can learn more about me [here](www.linkedin.com/in/r-tyler-mclaughlin-phd).
 
 # Posts
 
