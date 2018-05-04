@@ -36,11 +36,11 @@ interpreting very high-dimensional data, a large number of data analysis
 tools have been invented and applied to this new kind of experimental
 data.
 
-In this tutorial, I use a publically available dataset from the paper
+In this tutorial, I want to show how you can make sense of high-dimensional CyTOF data using a common analysis procedure called SPADE.  I use a publically available dataset from the paper
 ["Genetic and environmental determinants of human NK cell diversity
 revealed by mass
 cytometry"](https://www.ncbi.nlm.nih.gov/pubmed/24154599) by Amir
-Horowitz et al.
+Horowitz et al.  I show how to do the analysis procedure SPADE, which stands for "Spanning-Tree Progression Analysis of Density Normalized Events".
 
 Loading the data
 ----------------
@@ -50,9 +50,11 @@ diversity data (the data.table is included in this repository so you can
 follow along without creating an account on the Immport hosting
 website).
 
-    library(data.table)
-    load('../scripts/CyTOF-data.Rda')
-    dt1
+```r
+library(data.table)
+load('../scripts/CyTOF-data.Rda')
+dt1
+```
 
     ##                         .rownames                      name    Time
     ##      1: 050112-HNK-001.400899.fcs 050112-HNK-001.400899.fcs     304
@@ -201,19 +203,39 @@ website).
 
 ### Installing spade package in R
 
-This package is from Gary Nolan's group at Stanford.
+This package is from [Gary Nolan's research group](http://web.stanford.edu/group/nolan/) at Stanford.
 
-    install.packages("devtools")
-    library(devtools)
-    devtools::install_github("nolanlab/Rclusterpp")
-    source("http://bioconductor.org/biocLite.R")
-    devtools::install_github("nolanlab/spade")
+```r
+install.packages("devtools")
+library(devtools)
+devtools::install_github("nolanlab/Rclusterpp")
+source("http://bioconductor.org/biocLite.R")
+devtools::install_github("nolanlab/spade")
+```
+
+Note:  do not install Rclusterpp using CRAN (`install.packages("Rclusterpp")`) because an outdated version is hosted on CRAN that is not compatible with the newer version of SPADE.
+
+If you're having trouble installing Rclusterpp via github (as I did) because of OpenMP, follow [this guide](http://thecoatlessprofessor.com/programming/openmp-in-r-on-os-x/#after-3-4-0).
+
+Now that we have set up the package and its dependencies, let's try running the algorithm:
+
+```r
+library(spade)
+SPADE.driver('.')
+```
+
+
+The first part of SPADE is downsampling.
+This outputs 
 
 Performing vi-T-SNE
 -------------------
+COMING SOON
+
 
 Conclusions
 -----------
+
 
 Visualizing CyTOF data in this blog post. I'd like to thank Emily Mace
 for introducing me to the technology.
