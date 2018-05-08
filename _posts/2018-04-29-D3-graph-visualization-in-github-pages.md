@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "D3 with GitHub Pages"
+title: "D3 Graph Visualization in GitHub Pages"
 author: "R. Tyler McLaughlin"
 date: "April 29th, 2018"
 categories: blog
@@ -20,8 +20,13 @@ categories: blog
 
 </style>
 
-[D3](https://d3js.org/) is a [Javascript](https://www.javascript.com/) library for producing really cool visualizations such as [this one](http://www.r2d3.us/visual-intro-to-machine-learning-part-1/) and [these](https://github.com/mbostock/d3/wiki/Gallery). According to [Wikipedia](https://en.wikipedia.org/wiki/D3.js), D3 offers greater control over the appearance of the final result than other similar libraries. This (probably) means that it requires a bit more Javascript experience than other libraries, but I have to admit I'm totally new to Javascript.
+The Javascript library [D3](https://d3js.org/) is known for making extremely nice looking, interactive data visualization apps that run in your web browser.  Some impressive examples include Mike Barry and Brian Card's visualizations of the [Boston subway system data](http://mbtaviz.github.io) and [an interactive neural network](https://playground.tensorflow.org) courtesy of Tensorflow.
 
+Even though D3 has a serious learning curve, it is possible to make use of its nice visualizations without really knowing anything about Javascript.
+This post will walk you through how to visualize a graph aka network in D3 with your own data.
+
+It is really not that hard to get your own data
+For this post I attempted to visualize my own network data using D3.  I followed a lot of steps by 
 For this post, I wanted to make a simple D3 visualization to test whether or not there would be any hiccups to overcome in order to host my own D3 work with a Jekyll Blog and GitHub Pages. Javascript is high on my list of things to learn and I think picking up D3 along the way would be fun way to do that. I do not, however, want the presence of D3 on this site to indicate to anyone that I know what I'm doing. I do not.
 
 <div id='d3div'></div>
