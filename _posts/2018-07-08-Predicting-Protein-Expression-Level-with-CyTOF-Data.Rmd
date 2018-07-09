@@ -1,0 +1,63 @@
+---
+title: "2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data"
+author: "R Tyler McLaughlin"
+date: "7/8/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Project Goals
+
+There is a new technology that produces 40-dimensional data quantifying the epression levels of protein markers relevant to immune and cancer cell biology.
+
+### what is CyTOF?
+
+CyTOF is a state-of-the-art cell analysis technology from Stanford University that allows measurement of the expression levels of 40 different proteins.  
+
+### About the data set
+
+A publically available CyTOF dataset includes human Natural Killer cells from ImmPort that I refine/preprocess to have 34 numerical dimensions.
+
+
+## Data Wrangling
+
+```{r , eval = FALSE}
+
+# remove dead cells by removing the top 5% percentile of maleimide-DOTA signal.
+dt.filtered <- dt1[`Dead(In115)Dd` < quantile(`Dead(In115)Dd`,.95)]
+
+dt1 <- dt.filtered
+# what is CD10 (column 17) doing here? it's not in supplemental table
+extraneous.ids <- c(1:6,7,17,44,45)
+old.names <- attr(dt1,"names")
+new.names <- c('CD27','CD19','CD4','CD8','CD57',
+       'KIR2DL1-S1','TRAIL','KIR2DL2-L3-S2','CD16',
+       'KIR3DL1-S1','CD117','KIR2DS4', 'LILRB1','NKp46',
+       'NKG2D','NKG2C','2B4','CD33','CD11b','NKp30',
+       'CD122','KIR3DL1','NKp44','CD127','KIR2DL1',
+       'CD94','CD34','CCR7','KIR2DL3', 'NKG2A',
+       'HLA-DR','KIR2DL4','CD56','KIR2DL5','CD25')
+setnames(dt1,old.names[-extraneous.ids],new.names)
+dt1 <- dt1[,-extraneous.ids,with=FALSE]
+
+# remove  outliers
+high.cutoff <- quantile(unlist(dt1),0.99)
+dt1 <- dt1[rowMeans(dt1<high.cutoff)==1]
+```
+For your benefit, I've included the pre-processed data in this repository so you can load it using the following:
+
+```{r load.data, eval = TRUE}
+load(file = 'CyTOF-data-filtered.Rda')
+```
+
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
