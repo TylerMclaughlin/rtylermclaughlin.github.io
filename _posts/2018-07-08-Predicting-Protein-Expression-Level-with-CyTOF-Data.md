@@ -1,30 +1,25 @@
----
-title: "2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data"
-author: "R Tyler McLaughlin"
-date: "7/8/2018"
-output: github_document
----
+2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data
+================
+R Tyler McLaughlin
+7/8/2018
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-## Project Goals
+Project Goals
+-------------
 
 There is a new technology that produces 40-dimensional data quantifying the epression levels of protein markers relevant to immune and cancer cell biology.
 
 ### what is CyTOF?
 
-CyTOF is a state-of-the-art cell analysis technology from Stanford University that allows measurement of the expression levels of 40 different proteins.  
+CyTOF is a state-of-the-art cell analysis technology from Stanford University that allows measurement of the expression levels of 40 different proteins.
 
 ### About the data set
 
 A publically available CyTOF dataset includes human Natural Killer cells from ImmPort that I refine/preprocess to have 34 numerical dimensions.
 
+Data Wrangling
+--------------
 
-## Data Wrangling
-
-```{r , eval = FALSE}
-
+``` r
 # remove dead cells by removing the top 5% percentile of maleimide-DOTA signal.
 dt.filtered <- dt1[`Dead(In115)Dd` < quantile(`Dead(In115)Dd`,.95)]
 
@@ -46,18 +41,16 @@ dt1 <- dt1[,-extraneous.ids,with=FALSE]
 high.cutoff <- quantile(unlist(dt1),0.99)
 dt1 <- dt1[rowMeans(dt1<high.cutoff)==1]
 ```
+
 For your benefit, I've included the pre-processed data in this repository so you can load it using the following:
 
-```{r load.data, eval = TRUE}
+``` r
 load(file = 'CyTOF-data-filtered.Rda')
 ```
 
-
-## Including Plots
+Including Plots
+---------------
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
+![](2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/figure-markdown_github/pressure-1.png)
