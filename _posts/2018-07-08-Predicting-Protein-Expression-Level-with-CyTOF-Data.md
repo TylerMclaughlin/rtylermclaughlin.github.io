@@ -1,4 +1,11 @@
-2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data
+---
+layout: post
+title: "Predicting Protein Expression level with CyTOF data"
+author: "R. Tyler McLaughlin"
+date: "July 8th, 2018"
+categories: blog
+---
+
 ================
 R Tyler McLaughlin
 7/8/2018
