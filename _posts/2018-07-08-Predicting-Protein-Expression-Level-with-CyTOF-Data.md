@@ -118,7 +118,7 @@ library(GGally)
 ggpairs(log(subset.dt))
 ```
 
-![]({{"/images/2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/figure-markdown_github/ggpairs-1.png"|absolute_url)
+![]({{"/images/2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/figure-markdown_github/ggpairs-1.png"|absolute_url}})
 
 
 To get a satellite view of the correlative structure of the data, it helps to plot the Spearman correlation matrix.
