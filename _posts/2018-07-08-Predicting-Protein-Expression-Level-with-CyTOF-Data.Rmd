@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 #Project Goals
 
 There is a new biotechnology called [CyTOF](https://en.wikipedia.org/wiki/Mass_cytometry) that produces 40-dimensional data quantifying the expression levels of protein markers on the surface of immune and cancer cells.
-The recent availability of data this large has motivated the development of new methods for its analysis. 
+The recent availability of high-dimensional data like this has motivated the development of new methods for its analysis. 
 Here, I use [ridge](https://en.wikipedia.org/wiki/Tikhonov_regularization) and [LASSO regression](https://en.wikipedia.org/wiki/Lasso_(statistics)) techniques to see if the expression level of one protein can be estimated from the expression levels of the other proteins in the data set.  These are the three motivating questions I'm trying to answer: 
 
 - **Can we predict the level of one protein by knowing the level of multiple other proteins?**
