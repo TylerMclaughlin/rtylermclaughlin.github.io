@@ -136,7 +136,8 @@ Here's what the full matrix looks like:
 knitr::include_graphics("2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/spearman_correlation_matrix.pdf")
 ```
 
-<embed src="2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/spearman_correlation_matrix.pdf" width="1000px" height="1000px" type="application/pdf" />
+<embed src="/images/2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/spearman_correlation_matrix.pdf" width="1000px" height="1000px" type="application/pdf" />
+
 Simple Linear Model
 ===================
 
