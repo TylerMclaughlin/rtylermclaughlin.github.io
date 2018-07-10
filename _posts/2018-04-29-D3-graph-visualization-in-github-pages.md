@@ -28,7 +28,7 @@ Even though D3 has a [serious learning curve](https://medium.com/@enjalot/the-hi
 This post will walk you through how to visualize a graph aka network in D3 with your own data.
 
 
-For this post and my website, I learned to visualize my own network data using D3.  I followed a lot of steps by other bloggers like [Andrew Mehrmann](http://dkmehrmann.github.io/blog/2016/05/01/d3.html) and [Eric Bickel](https://ehbick01.github.io/2017/05/09/embedding-d3-visuals-in-rmarkdown/) to get this to work.    Here's what the end result looks like: 
+For this post and for my website, I wanted to learn to visualize my own network data using D3.  I followed a lot of steps by other bloggers like [Andrew Mehrmann](http://dkmehrmann.github.io/blog/2016/05/01/d3.html) and [Eric Bickel](https://ehbick01.github.io/2017/05/09/embedding-d3-visuals-in-rmarkdown/) to get this to work.    Here's what the end result looks like: 
 
 <div id='d3div'></div>
 
