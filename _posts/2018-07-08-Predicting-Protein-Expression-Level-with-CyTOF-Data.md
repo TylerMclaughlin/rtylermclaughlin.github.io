@@ -128,7 +128,7 @@ To get a satellite view of the correlative structure of the data, it helps to pl
 ggcorr(subset.dt,c("pairwise", "spearman"),size = 2)
 ```
 
-![](2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/figure-markdown_github/spearman.subset-1.png)
+![]({{"/images/2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/figure-markdown_github/spearman.subset-1.png"|absolute_url}})
 
 Here's what the full matrix looks like:
 
@@ -216,7 +216,7 @@ pr <- prcomp(dt1, scale = TRUE)
 plot(pr)
 ```
 
-![](2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/figure-markdown_github/pca-1.png)
+![]({{"/images/2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/figure-markdown_github/pca-1.png"|absolute_url}})
 
 Let's calculate the cumulative sum of variance per eigenvector.
 
@@ -226,7 +226,7 @@ cvar <- cumsum(pr$sdev^2 / sum(pr$sdev^2))
 plot(cvar,type = 'o')
 ```
 
-![](2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/figure-markdown_github/cumulative.var-1.png)
+![]({{"/images/2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/figure-markdown_github/cumulative.var-1.png"|absolute_url}})
 
 ``` r
 cvar
@@ -317,7 +317,7 @@ plot(ridge.cv.out$glmnet.fit, "lambda", label=TRUE)
 abline(v = ridge.best.lambda, col = "black")
 ```
 
-![](2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/figure-markdown_github/ridge.lambda-1.png)
+![]({{"/images/2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/figure-markdown_github/ridge.lambda-1.png"|absolute_url}})
 
 ``` r
 ridge.best.lambda
@@ -330,7 +330,7 @@ plot(lasso.cv.out$glmnet.fit, "lambda", label=TRUE)
 abline(v = lasso.best.lambda, col = "black")
 ```
 
-![](2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/figure-markdown_github/lasso.lambda-1.png)
+![]({{"/images/2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/figure-markdown_github/lasso.lambda-1.png"|absolute_url}})
 
 ``` r
 lasso.best.lambda
@@ -425,7 +425,7 @@ First let's look at a histogram of CD56 values:
 hist(sample(unlist(y),10000))
 ```
 
-![](2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/figure-markdown_github/hist-1.png) It looks like CD56 ranges between -5 and 5. (Remember we did a a log transform during the preprocessing phase.) Let's quantify the mean and standard deviation.
+![]({{"/images/2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/figure-markdown_github/hist-1.png"|absolute_url}}) It looks like CD56 ranges between -5 and 5. (Remember we did a a log transform during the preprocessing phase.) Let's quantify the mean and standard deviation.
 
 ``` r
 mean(unlist(y))
@@ -450,7 +450,7 @@ library(plotmo,quietly=T)
 plotres(basic.lm)
 ```
 
-![](2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/figure-markdown_github/least.squares.res-1.png)
+![]({{"/images/2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/figure-markdown_github/least.squares.res-1.png"|absolute_url}})
 
 For ridge regression:
 
@@ -458,7 +458,7 @@ For ridge regression:
 plotres(ridge.cv.out)
 ```
 
-![](2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/figure-markdown_github/ridge.res-1.png)
+![]({{"/images/2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/figure-markdown_github/ridge.res-1.png"|absolute_url}})
 
 And lastly for the LASSO fit:
 
@@ -466,7 +466,7 @@ And lastly for the LASSO fit:
 plotres(lasso.cv.out)
 ```
 
-![](2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/figure-markdown_github/lasso.res-1.png)
+![]({{"/images/2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/figure-markdown_github/lasso.res-1.png"|absolute_url}})
 
 These plots indiate there are no dramatic non-linearities present in the data. This suggests that using linear models seems to be an ok way to make predictions and that there is no need to use more flexible versions of these tools like polynomial regression or splines for a task like this. It is worth mentioning that **the logarithmic transform** during the pre-preprocessing stage **was essential** as otherwise these *residuals vs fitted values* plots look much less well-behaved.
 
@@ -491,7 +491,7 @@ The cell is a complex network of thousands of interacting proteins. In this ligh
 While my project does not answer how many proteins we need to accurately predict the level of CD56, perhaps a more prudently chosen set of 34 proteins would yield strong prediction ability so that we get an RMSE within a tiny fraction of the sample standard deviation.
 Alternatively, we may need several hundreds of proteins to be measured simultaneously to predict the level of any one protein. If this is true, then CyTOF technology is simply not good enough and we may need to wait decades before we can answer questions like this.
 
-Optimistically, perhaps using other powerful methods, like random forests or deep learning, would work better with the same data. I am excited to test out these methods on CyTOF data in the near future! Thanks for reading, and if you followed along with your own data or protein marker, please let me know!
+Optimistically, perhaps using other powerful methods, like random forests or deep learning, would work better with the same data. I am excited to test out these methods on CyTOF data in the near future! Thanks for reading, and if you followed along with your own data or a different protein marker, technique, etc., please let me know!
 
 References
 ==========
