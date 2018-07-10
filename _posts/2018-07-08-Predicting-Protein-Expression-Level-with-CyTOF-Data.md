@@ -1,7 +1,11 @@
-Predicting Protein Expression Level with CyTOF Data and Ridge and LASSO Regression
-================
-R Tyler McLaughlin
-7/8/2018
+---                                                                         
+layout: post
+title: "Predicting Protein Expression Level with CyTOF Data and Ridge and LASSO Regression"
+author: "R. Tyler McLaughlin"
+date: "July 8th, 2018"
+categories: blog
+---
+
 
 Project Goals
 =============
@@ -135,10 +139,12 @@ knitr::include_graphics("2018-07-08-Predicting-Protein-Expression-Level-with-CyT
 Simple Linear Model
 ===================
 
-Let's look at what type of R squared value we can get if we build a basic multiple linear regression model for predicting one protein's expression level using the expression levels of the other 34 proteins. CD56, the predicted or 'response' variable, is cell surface protein whose expression level is important during Natural Killer cell development. **CD56 will be the response variable that we try to predict for the rest of this study.**
+Let's look at what type of R squared value we can get if we build a basic multiple linear regression model for predicting one protein's expression level using the expression levels of the other 34 proteins. CD56, the predicted or 'response' variable, is cell surface protein whose expression level is important during Natural killer cell development. **CD56 will be the response variable that we try to predict for the rest of this study.**
+
+We use the `lm()` function to build a linear model. The notation `CD56~.` defines the regression equation. Since CD56 is to the left of the tilde, this makes it the dependendent variable in the regression equation. The period to the right of the tilde is shorthand for using the remaining columns of the data.table as the predictor variables.
 
 ``` r
-lm1 <- lm(CD56~.,data = dt1)
+lm1 <- lm(CD56~.,data = dt1) 
 summary(lm1)
 ```
 
@@ -194,7 +200,7 @@ summary(lm1)
     ## Multiple R-squared:  0.4131, Adjusted R-squared:  0.4129 
     ## F-statistic:  2916 on 34 and 140868 DF,  p-value: < 2.2e-16
 
-The *F*-statistic *p*-value is very small indicating that the regression slopes are certainly statistically different from zero. This initial model has a multiple R-squared of `summary(lm1)$r.squared`. This isn't bad for what I expected.
+The *F*-statistic *p*-value is very small indicating that the regression slopes are certainly statistically different from zero. This initial model has a multiple R-squared of 0.413087. This isn't bad for what I expected.
 
 Principal Components Analysis
 =============================
@@ -243,6 +249,8 @@ x = model.matrix(CD56~., dt1)[,-1]
 y = dt1$CD56
 ```
 
+Randomly split the data 50/50 into training and test sets:
+
 ``` r
 set.seed(1) # so your random numbers are identical to mine.
 # the training set is a random 50% of the data
@@ -255,7 +263,7 @@ y.test = y[test]
 Building ridge and LASSO regression models
 ==========================================
 
-Ridge and LASSO models are useful mainly because they are less prone to overfitting data when compared to multiple linear regression models fit using least-squares. In otherwords, these methods reduce the test error, which means better predictive modeling.
+Ridge and LASSO models are useful mainly because they are less prone to overfitting data when compared to multiple linear regression models that are fit using least-squares. In other words, these methods reduce the test error, which makes them better for predictive modeling.
 
 Ridge and LASSO regression techniques both take a tuning parameter called "lambda" that controls the degree of regularization aka "shrinkage." A large value of lambda will force the regression weights to be small. In the case of LASSO regression, lambda will force a subset of the weights to be exactly zero.
 
@@ -282,19 +290,19 @@ library(glmnet,quietly=T)
     ## Loaded glmnet 2.0-16
 
 ``` r
-# RIDGE REGRESSION and LASSO REGRESSION
-# standardizes by default.
+# Setting alpha = 0 builds a ridge regression model.
 ridge.model <-  glmnet(x[train,],y[train],alpha=0,lambda = grid)
+# alpha = 1 is for lasso regression
 lasso.model <- glmnet(x[train,],y[train],alpha=1,lambda = grid)
 ```
+
+These methods standardize the data by default.
 
 In order to estimate the optimal value of lambda to use for each of the two models, we use 5-fold cross-validation on the training set. The `cv.glmnet` function is used for both the ridge and LASSO.
 
 ``` r
-# Setting alpha = 0 builds a ridge regression model.
 ridge.cv.out <- cv.glmnet(x[train,],y[train],alpha=0,nfolds = 5)
 ridge.best.lambda <- min(ridge.cv.out$lambda.min)
-# alpha = 1 is for lasso regression
 lasso.cv.out <- cv.glmnet(x[train,],y[train],alpha=1,nfolds = 5)
 lasso.best.lambda <- min(lasso.cv.out$lambda.min)
 ```
@@ -329,7 +337,7 @@ lasso.best.lambda
 
     ## [1] 0.002118107
 
-For both of these models, the optimal lambda is small--very close to zero (marked by the black line). We will eventually see that a little bit of regularization goes a long way.
+For both of these models, the optimal lambda is small--very close to zero (marked by the black line). This means regularization is not being applied heavily and the weights in the models are not too different from those obtained using ordinary least-squares. We will eventually see that a little bit of regularization goes a long way.
 
 Making Predictions
 ==================
@@ -356,9 +364,6 @@ basic.prediction <- predict(basic.lm, newx = x[test,])
 basic.lm.RMSE <- sqrt(mean((basic.prediction - y.test)^2))
 ```
 
-    ## Warning in basic.prediction - y.test: longer object length is not a
-    ## multiple of shorter object length
-
 Let's also make a trivial linear model for comparing to our other regression models.
 
 My trivial linear model is fitting the data to a line y = 1.
@@ -368,9 +373,6 @@ trivial.lm <- lm(y[train] ~ 1)
 trivial.prediction <- predict(trivial.lm, newx = x[test,])
 trivial.lm.RMSE <- sqrt(mean((trivial.prediction - y.test)^2))
 ```
-
-    ## Warning in trivial.prediction - y.test: longer object length is not a
-    ## multiple of shorter object length
 
 Model results
 =============
@@ -413,7 +415,7 @@ basic.lm.train.RMSE
 
 Ridge and LASSO, which have about the same test RMSE, have substantially lower test error than compared to both the trivial and basic linear regression models. This means that these so called "shrinkage methods" are not overfitting (regularization is working) and they provide a true predictive advantage.... Which was what we wanted, wasn't it?
 
-Well, not quite. We also need to compare the RMSE values to the statistics of the response variable, CD56. Otherwise we shouldn't make hay out of the model prediction.
+Well, not quite. We also need to compare the RMSE values to the scale and statistics of the response variable, CD56. Otherwise we can't really say how good our model prediction is.
 
 First let's look at a histogram of CD56 values:
 
@@ -436,7 +438,7 @@ sd(unlist(y))
 
     ## [1] 2.002855
 
-With RMSE of about 1.535721,it looks like our model makes predictions within one standard deviation of the sample mean. This is pretty OK!
+With an RMSE of about 1.535721,it looks like our ridge model makes predictions within about 0.7667659 of one standard deviation. This is pretty OK!
 
 One last thing, let's check to make sure the model works well regardless of the expression level of the response variable CD56. I'll plot the *residuals* versus the *fitted values* using the 'plotmo' package.
 
@@ -465,7 +467,7 @@ plotres(lasso.cv.out)
 
 ![](2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/figure-markdown_github/lasso.res-1.png)
 
-These plots indiate there are no dramatic non-linearities present in the data. This suggests that using linear models seems to be an ok way to make predictions and that there is no need to use more advanced tools like polynomial regression or splines for a task like this. It is worth mentioning that **the logarithmic transform** during the pre-preprocessing stage **was essential** as otherwise these *residuals vs fitted values* plots would look much less well-behaved.
+These plots indiate there are no dramatic non-linearities present in the data. This suggests that using linear models seems to be an ok way to make predictions and that there is no need to use more flexible versions of these tools like polynomial regression or splines for a task like this. It is worth mentioning that **the logarithmic transform** during the pre-preprocessing stage **was essential** as otherwise these *residuals vs fitted values* plots look much less well-behaved.
 
 Conclusions
 ===========
@@ -474,21 +476,21 @@ In this project, I applied several regression techniques to CyTOF data and evalu
 
 -   **Can we predict the level of one protein by knowing the level of multiple other proteins?**
 
-The LASSO and ridge models applied to 34 protein levels from the CyTOF data set indeed offer a moderate ability to predict the level of the one protein I investigated (CD56), with an RMSE within one standard deviation of the sample mean.
+The LASSO and ridge models applied to 34 protein levels from the CyTOF data set indeed offer a moderate ability to predict the level of the one protein I investigated (CD56), with an RMSE which is about 25% less than one standard deviation of the sample mean.
 
 -   **How accurately?**
 
-Ideally, I would like to have prediction accuracy within a small fraction of the sample standard deviation. The high RMSE relative to scale of CD56 variablitiy means that measuring the expression level of these 34 proteins per cell is not sufficient to infer the expression level of CD56. This suggests that there are other factors involved in the regulation of CD56 expression and most of the proteins in the data set are unrelated to CD56 expression level.
+Ideally, I would like to have prediction accuracy within a small fraction of the sample standard deviation. The high RMSE relative to the scale of CD56 variablitiy means that measuring the expression level of these 34 proteins per cell is not sufficient to infer the expression level of CD56. This suggests that there are other factors involved in the regulation of CD56 expression and most of the proteins in the data set are unrelated to CD56 expression level.
 For a stronger biological conclusion of this study, it appears that these 34 proteins are not closely associated with the CD56 regulatory pathway.
 Measuring proteins more directly associated with regulation of CD56 would certainly lead to a better predictive model.
 
 -   **How many other proteins do we need?**
 
-The cell is a complex network of thousands of interacting proteins. In this light, it is promising that I was able to build predictive ridge and lasso regression models using only the 34 predictor variables available in the data set.
-While my project does not answer how many proteins we need to accurately predict the level of CD56, perhaps a more prudently chosen set of 34 proteins would yield sufficient prediction ability so that we get an RMSE within a tiny fraction of the sample standard deviation.
+The cell is a complex network of thousands of interacting proteins. In this light, it is promising that I was able to build predictive ridge and LASSO regression models using only the 34 predictor variables available in the data set.
+While my project does not answer how many proteins we need to accurately predict the level of CD56, perhaps a more prudently chosen set of 34 proteins would yield strong prediction ability so that we get an RMSE within a tiny fraction of the sample standard deviation.
 Alternatively, we may need several hundreds of proteins to be measured simultaneously to predict the level of any one protein. If this is true, then CyTOF technology is simply not good enough and we may need to wait decades before we can answer questions like this.
 
-Optimistically, perhaps using other powerful methods, like random forests or deep learning, would work better with the same data. These methods are coming soon!
+Optimistically, perhaps using other powerful methods, like random forests or deep learning, would work better with the same data. I am excited to test out these methods on CyTOF data in the near future! Thanks for reading, and if you followed along with your own data or protein marker, please let me know!
 
 References
 ==========
