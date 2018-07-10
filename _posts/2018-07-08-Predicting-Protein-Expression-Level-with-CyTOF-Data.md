@@ -14,7 +14,7 @@ There is a new biotechnology called [CyTOF](https://en.wikipedia.org/wiki/Mass_c
 
 -   **Can we predict the level of one protein by knowing the level of multiple other proteins?**
 
--   **How accurately?**
+-   **If so, how accurately?**
 
 -   **How many other proteins do we need?**
 
@@ -118,7 +118,8 @@ library(GGally)
 ggpairs(log(subset.dt))
 ```
 
-![]({{site.url}}{{site.baseurl}}/2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/figure-markdown_github/ggpairs-1.png)
+![]({{"/images/2018-07-08-Predicting-Protein-Expression-Level-with-CyTOF-Data_files/figure-markdown_github/ggpairs-1.png"|absolute_url)
+
 
 To get a satellite view of the correlative structure of the data, it helps to plot the Spearman correlation matrix.
 [Spearman correlation](https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient) is just like Pearson correlation but without the assumption of linearity.
