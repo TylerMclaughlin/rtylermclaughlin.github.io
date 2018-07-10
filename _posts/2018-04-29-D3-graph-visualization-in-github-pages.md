@@ -24,7 +24,7 @@ This is a starter guide for visualizing your own graph/network data in D3 and lo
 
 The Javascript library [D3](https://d3js.org/) is known for making extremely nice looking, interactive data visualization apps that run in your web browser.  Some impressive examples include Mike Barry and Brian Card's visualizations of the [Boston subway system data](http://mbtaviz.github.io) and [an interactive neural network](https://playground.tensorflow.org) courtesy of Tensorflow.
 
-Even though D3 has a serious learning curve, it is possible to make use of its nice interactive visualizations without really knowing anything about Javascript.  As it turns out, it is really not that hard to get your own data in an interactive D3 graph!
+Even though D3 has a [serious learning curve](https://medium.com/@enjalot/the-hitchhikers-guide-to-d3-js-a8552174733a), it is possible to make use of its nice interactive visualizations without really knowing anything about Javascript.  As it turns out, it is really not that hard to get your own data in an interactive D3 graph!
 This post will walk you through how to visualize a graph aka network in D3 with your own data.
 
 
@@ -63,16 +63,16 @@ This is what a minimal non-hierarchical graph in JSON format looks like:
     ]
  }
 ```
-This JSON file contains all the information about the graph's links and nodes.   You can Specify what the color the nodes should be via the "group" argument.  In the `links` element, which refers to the edges in the graph, it specifies how the nodes are connected (as directed *source/target* edges) Lastly, the `value` argument will determine the thickness of the edge.  Very simple!
+This JSON file contains all the information about the graph's links and nodes.   You can Specify what the color the nodes should be via the `"group"` argument.  In the `"links"` element, which refers to the edges in the graph, it specifies how the nodes are connected (as directed *source/target* edges) Lastly, the `"value"` argument will determine the thickness of the edge.  Very simple!
 
 Once your data is in the format like this, you will also need to create a folder called `/scripts/` in the root directory of your github.io repository and move your .json file there.
 
-## javascript 
+## JavaScript 
 
-Now go to [Andrew Mehrmann's blog post](http://dkmehrmann.github.io/blog/2016/05/01/d3.html) and copy the javascript (which was taken from [Mike Bostock's original force-directed graph visualization](http://bl.ocks.org/mbostock/4062045) and modified for size autoscaling) and paste it directly into your markdown file.  Make sure you also copy the style tag.  Thanks, Andrew and Mike!  
+Now go to [Andrew Mehrmann's blog post](http://dkmehrmann.github.io/blog/2016/05/01/d3.html) and copy the javascript (which was derived from [Mike Bostock's original force-directed graph visualization](http://bl.ocks.org/mbostock/4062045) and modified for size autoscaling) and paste it directly into your markdown file.  Make sure you also copy the style tag.  Thanks, Andrew and Mike!  
 
 It doesn't really matter where you put the javascript or the style tag.  
-The location of the graph will be wherever you put the following html into your markdown file:
+The location of the graph will be wherever you put the following div tag into your markdown file:
 
 ```html
 <div id='d3div'></div>
